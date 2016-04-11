@@ -1,0 +1,13 @@
+Hotel:
+  type: entity
+  table: Hotels
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+      length: 50
+    

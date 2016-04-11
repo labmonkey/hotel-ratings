@@ -1,0 +1,21 @@
+{
+  "name": "hotel-ratings",
+  "version": "0.0.0",
+  "homepage": "https://github.com/labmonkey/hotel-ratings",
+  "authors": [
+    "Paweł Derehajło <derehajlo@gmail.com>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "~2.1.4"
+  }
+}
