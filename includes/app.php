@@ -8,3 +8,9 @@
  * Summary:
  * TODO summary of this file
  */
+
+include_once 'load.php';
+
+new Loader( dirname( __DIR__ ) );
+
+app();
