@@ -14,8 +14,10 @@ class HomepageController extends Controller {
 		parent::__construct( $view );
 
 		$this->template = 'pages/homepage.twig';
+	}
 
-		$this->content = array( 'test' => 'lol' );
+	function add_content( $content ) {
+		return $content;
 	}
 }
 

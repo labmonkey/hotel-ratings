@@ -17,6 +17,17 @@ class Controller {
 
 	function __construct( $view ) {
 		$this->view = $view;
+
+		$this->content = $this->add_content( array() );
+	}
+
+	/**
+	 * @param $content
+	 *
+	 * @return array
+	 */
+	function add_content( $content ) {
+		return $content;
 	}
 
 	function display() {

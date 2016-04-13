@@ -9,18 +9,11 @@
  * Summary:
  * TODO summary of this file
  */
-class ErrorController extends Controller {
-
-	private $errors;
-
-	function __construct( $view, $error ) {
+class AdminController extends Controller {
+	function __construct( $view ) {
 		parent::__construct( $view );
 
-		$this->errors = array(
-			'404' => 'pages/404.twig'
-		);
-
-		$this->template = get_col( $this->errors, $error, $this->errors['404'] );
+		$this->template = 'pages/admin.twig';
 	}
 
 	function add_content( $content ) {

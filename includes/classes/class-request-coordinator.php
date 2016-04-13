@@ -10,10 +10,12 @@
  * TODO summary of this file
  */
 class RequestCoordinator {
-	private $controllers;
+	private $controllers, $request;
 
-	function __construct() {
+	function __construct( $request ) {
 		$this->init_controller_map();
+
+		$this->request = $request;
 	}
 
 	function init_controller_map() {
@@ -23,7 +25,11 @@ class RequestCoordinator {
 		);
 	}
 
-	function get_controller( $path ) {
+	function get_controller( $path = '' ) {
+		if ( empty( $path ) ) {
+			$path = $this->request;
+		}
+
 		if ( array_key_exists( $path, $this->controllers ) ) {
 			$class = $this->controllers[ $path ];
 
@@ -35,7 +41,7 @@ class RequestCoordinator {
 		return $controller;
 	}
 
-	function handle_request( $path ) {
-
+	function is_admin() {
+		return strpos( $this->request, '/admin' ) === 0;
 	}
 }

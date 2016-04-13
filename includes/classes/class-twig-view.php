@@ -16,11 +16,17 @@ class TwigView extends View {
 	private $loader;
 
 	function init() {
-		$paths = array(
-			Config::getViewsDir( 'web/templates' ),
-			//Config::getViewsDir( 'admin/templates' )
-		);
-		$this->loader = new Twig_Loader_Filesystem($paths);
+		if ( is_admin() ) {
+			$paths = array(
+				Config::getViewsDir( 'admin/templates' )
+			);
+		} else {
+			$paths = array(
+				Config::getViewsDir( 'web/templates' )
+			);
+		}
+
+		$this->loader = new Twig_Loader_Filesystem( $paths );
 		$this->twig   = new Twig_Environment( $this->loader, array(
 			'cache' => Config::getRootDir( 'cache' ),
 		) );

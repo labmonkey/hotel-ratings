@@ -22,6 +22,10 @@ function app() {
 	return $application;
 }
 
+function is_admin() {
+	return app()->is_admin();
+}
+
 function get_col( $array, $column, $default = null ) {
 	if ( ! empty( $array ) && array_key_exists( $column, $array ) ) {
 		return $array[ $column ];

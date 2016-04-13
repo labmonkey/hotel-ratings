@@ -20,19 +20,23 @@ class Application {
 
 	function __construct() {
 		$this->view = new TwigView();
-		$this->view->init();
 	}
 
 	function init() {
 		$path              = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
-		$this->coordinator = new RequestCoordinator();
+		$this->coordinator = new RequestCoordinator( $path );
+		$this->controller  = $this->coordinator->get_controller( $path );
 
-		$this->controller = $this->coordinator->get_controller( $path );
+		$this->view->init();
 
 		$this->controller->display();
 	}
 
 	function getView() {
 		return $this->view;
+	}
+
+	function is_admin() {
+		return $this->coordinator->is_admin();
 	}
 }

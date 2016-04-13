@@ -44,7 +44,8 @@ class Loader {
 
 		$controllers = array(
 			'controllers/web/homepage-controller.php',
-			'controllers/error-controller.php'
+			'controllers/error-controller.php',
+			'controllers/admin/admin-controller.php',
 		);
 
 
