@@ -7,6 +7,9 @@
 3. `npm install`
 4. `bower install`
 5. `gulp` - run each time
+
+##### Database
+In order to update database simply run `sudo sh includes/model/commands/update-db.sh`
 ### Libraries used
 ##### PHP
 + composer - Package manager

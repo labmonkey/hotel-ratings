@@ -18,7 +18,7 @@ class Loader {
 		$this->debug_mode();
 	}
 
-	function load_vendors(){
+	function load_vendors() {
 		include_once 'vendor/autoload.php';
 	}
 
@@ -30,16 +30,15 @@ class Loader {
 	}
 
 	function load_classes() {
-		$classes = array(
-		);
-
 		$includes = array(
 			'includes/functions.php',
 			'includes/classes/abstract/class-controller.php',
 			'includes/classes/abstract/class-view.php',
+			'includes/classes/abstract/class-model.php',
 			'includes/classes/class-application.php',
 			'includes/classes/class-twig-view.php',
-			'includes/classes/class-request-coordinator.php'
+			'includes/classes/class-request-coordinator.php',
+			'includes/classes/class-doctrine-model.php'
 		);
 
 		$controllers = array(
@@ -48,8 +47,11 @@ class Loader {
 			'controllers/admin/admin-controller.php',
 		);
 
+		$classes = array(
+			'includes/test/sample-data.php'
+		);
 
-		foreach ( array_merge( $includes, $controllers ) as $file ) {
+		foreach ( array_merge( $includes, $controllers, $classes ) as $file ) {
 			include_once Config::getRootDir( $file );
 		}
 	}

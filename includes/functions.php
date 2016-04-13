@@ -22,6 +22,13 @@ function app() {
 	return $application;
 }
 
+/*
+ * @return Model
+ */
+function db() {
+	return app()->getModel();
+}
+
 function is_admin() {
 	return app()->is_admin();
 }
@@ -32,4 +39,24 @@ function get_col( $array, $column, $default = null ) {
 	} else {
 		return $default;
 	}
+}
+
+function password_to_hash( $password ) {
+	$cost = 10;
+
+	$salt = strtr( base64_encode( mcrypt_create_iv( 16, MCRYPT_DEV_URANDOM ) ), '+', '.' );
+
+	$salt = sprintf( "$2a$%02d$", $cost ) . $salt;
+
+	$hash = crypt( $password, $salt );
+
+	return $hash;
+}
+
+function password_is_valid( $password, $hash ) {
+	if ( hash_equals( $hash, crypt( $password, $hash ) ) ) {
+		return true;
+	}
+
+	return false;
 }

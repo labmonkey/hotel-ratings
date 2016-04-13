@@ -18,8 +18,14 @@ class Application {
 
 	private $view, $config;
 
+	/* @var Model */
+	private $model;
+
 	function __construct() {
-		$this->view = new TwigView();
+		$this->view  = new TwigView();
+
+		global $entityManager;
+		$this->model = new DoctrineModel($entityManager);
 	}
 
 	function init() {
@@ -34,6 +40,10 @@ class Application {
 
 	function getView() {
 		return $this->view;
+	}
+
+	function getModel() {
+		return $this->model;
 	}
 
 	function is_admin() {

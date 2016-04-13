@@ -7,7 +7,10 @@ User:
       generator:
         strategy: AUTO
   fields:
-    name:
+    first_name:
+      type: string
+      length: 50
+    last_name:
       type: string
       length: 50
     email:
@@ -17,3 +20,8 @@ User:
       options:
         fixed: true
         comment: User's email address
+    password:
+      type: string
+      length: 100
+    admin:
+      type: boolean
