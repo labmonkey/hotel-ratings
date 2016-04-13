@@ -28,7 +28,8 @@ class TwigView extends View {
 
 		$this->loader = new Twig_Loader_Filesystem( $paths );
 		$this->twig   = new Twig_Environment( $this->loader, array(
-			'cache' => Config::getRootDir( 'cache' ),
+			'cache' => false
+			//'cache' => Config::getRootDir( 'cache' ),
 		) );
 	}
 

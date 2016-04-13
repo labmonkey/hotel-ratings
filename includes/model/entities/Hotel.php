@@ -19,6 +19,11 @@ class Hotel
      */
     private $name;
 
+    /**
+     * @var string
+     */
+    private $description;
+
 
     /**
      * Get id
@@ -51,5 +56,28 @@ class Hotel
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Hotel
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

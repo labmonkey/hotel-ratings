@@ -17,7 +17,10 @@ class HomepageController extends Controller {
 	}
 
 	function add_content( $content ) {
+		$users = db()->get_entity_manager()->getRepository( 'User' )->findAll();
+
+		$content['users'] = $users;
+		
 		return $content;
 	}
 }
-

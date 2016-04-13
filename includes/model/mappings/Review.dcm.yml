@@ -1,0 +1,19 @@
+Review:
+  type: entity
+  table: Review
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    rating:
+      type: integer
+      length: 1
+    message:
+      type: string
+      length: 500
+  manyToOne:
+    reviewer:
+      targetEntity: User
+      inversedBy: reviews

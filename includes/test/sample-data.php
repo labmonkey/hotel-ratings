@@ -13,7 +13,28 @@ if ( LOAD_SAMPLE_DATA === false ) {
 	return;
 }
 
-$wtf = db()->load( 'User', 1 );
+$hotels = array(
+	array(
+		'name'        => 'Hotel Rock',
+		'description' => 'Excellent business hotel. Close to the city center and public transportation. New facilities and friendly service. Fair breakfast prices. Popular among solo travelers.'
+	),
+	array(
+		'name'        => 'Hotel Jazz',
+		'description' => 'Very good luxury hotel. Close to Starbucks. Close to public transportation and the train station. Awesome terrace. Nice sauna. Bar is awesome. Popular among business travelers.'
+	),
+	array(
+		'name'        => 'Hotel Pop',
+		'description' => 'Excellent city hotel. Close to restaurants, bars and train stations. Free internet. Clean hotel facilities. Great reception. Popular among solo travelers.'
+	)
+);
+
+foreach ( $hotels as $data ) {
+	$hotel = new Hotel();
+	$hotel->setName( $data['name'] );
+	$hotel->setDescription( $data['description'] );
+
+	db()->save( $hotel );
+}
 
 $users = array(
 	array(
@@ -49,4 +70,11 @@ foreach ( $users as $data ) {
 	$user->setPassword( password_to_hash( $data['password'] ) );
 
 	db()->save( $user );
+
+	$review = new Review();
+	$review->setMessage( "test " . rand( 100, 1000 ) );
+	$review->setRating( rand( 1, 5 ) );
+	$review->setReviewer( $user );
+
+	db()->save( $review );
 }

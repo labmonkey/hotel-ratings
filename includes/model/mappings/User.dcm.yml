@@ -19,7 +19,6 @@ User:
       unique: true
       options:
         fixed: true
-        comment: User's email address
     password:
       type: string
       length: 100

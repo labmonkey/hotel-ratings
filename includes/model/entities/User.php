@@ -17,12 +17,27 @@ class User
     /**
      * @var string
      */
-    private $name;
+    private $first_name;
+
+    /**
+     * @var string
+     */
+    private $last_name;
 
     /**
      * @var string
      */
     private $email;
+
+    /**
+     * @var string
+     */
+    private $password;
+
+    /**
+     * @var boolean
+     */
+    private $admin;
 
 
     /**
@@ -34,67 +49,6 @@ class User
     {
         return $this->id;
     }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return User
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-    /**
-     * @var string
-     */
-    private $first_name;
-
-    /**
-     * @var string
-     */
-    private $last_name;
-
-    /**
-     * @var boolean
-     */
-    private $admin;
-
 
     /**
      * Set first_name
@@ -143,32 +97,27 @@ class User
     }
 
     /**
-     * Set admin
+     * Set email
      *
-     * @param boolean $admin
+     * @param string $email
      * @return User
      */
-    public function setAdmin($admin)
+    public function setEmail($email)
     {
-        $this->admin = $admin;
+        $this->email = $email;
 
         return $this;
     }
 
     /**
-     * Get admin
+     * Get email
      *
-     * @return boolean 
+     * @return string 
      */
-    public function getAdmin()
+    public function getEmail()
     {
-        return $this->admin;
+        return $this->email;
     }
-    /**
-     * @var string
-     */
-    private $password;
-
 
     /**
      * Set password
@@ -191,5 +140,28 @@ class User
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Set admin
+     *
+     * @param boolean $admin
+     * @return User
+     */
+    public function setAdmin($admin)
+    {
+        $this->admin = $admin;
+
+        return $this;
+    }
+
+    /**
+     * Get admin
+     *
+     * @return boolean 
+     */
+    public function getAdmin()
+    {
+        return $this->admin;
     }
 }
