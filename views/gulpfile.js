@@ -78,6 +78,8 @@ var task_js = function (gulp, paths, dest) {
 var task_sass = function (gulp, paths, dest) {
     gulp.src(paths)
         .pipe(sourcemaps.init())
+        .on('error', onError)
+        .pipe(include())
         .pipe(sass({
             includePaths: ['sass']
         }))
@@ -87,10 +89,10 @@ var task_sass = function (gulp, paths, dest) {
             // advanced: false,
             compatibility: 'ie9'
         }))
-        .pipe(sourcemaps.write('.'))
         .pipe(rename({
-            extname: '.min.js'
+            extname: '.min.css'
         }))
+        .pipe(sourcemaps.write('.'))
         .on('error', onError)
         .pipe(gulp.dest(dest));
 };
