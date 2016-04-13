@@ -17,11 +17,11 @@ class Config {
 
 	function __construct( $root, $url ) {
 		$this->root        = "$root/";
-		$this->views       = "$root/views/";
-		$this->controllers = "$root/controllers/";
-		$this->includes    = "$root/includes/";
+		$this->views       = "views/";
+		$this->controllers = "controllers/";
+		$this->includes    = "includes/";
 
-		$this->url = $url;
+		$this->url = $url . "/";
 
 		self::$_instance = $this;
 	}
@@ -35,7 +35,11 @@ class Config {
 	}
 
 	static function getViewsDir( $subpath = '' ) {
-		return Config::$_instance->views . $subpath;
+		return self::getRootDir( Config::$_instance->views . $subpath );
+	}
+
+	static function getViewsUrl( $subpath = '' ) {
+		return self::getRootUrl( Config::$_instance->views . $subpath );
 	}
 
 	static function getRootDir( $subpath = '' ) {
@@ -47,6 +51,6 @@ class Config {
 	}
 
 	static function getIncludesDir( $subpath = '' ) {
-		return Config::$_instance->includes . $subpath;
+		return self::getRootDir( Config::$_instance->includes . $subpath );
 	}
 }

@@ -10,13 +10,23 @@
  * TODO summary of this file
  */
 class Controller {
-	protected $template, $content;
+	protected $template, $content, $slug;
 
 	/* @var View */
 	protected $view;
 
+	protected $css, $js, $title;
+
 	function __construct( $view ) {
 		$this->view = $view;
+
+		$this->css = array();
+
+		$this->js = array();
+
+		$this->title = '';
+
+		$this->slug = '';
 
 		$this->content = $this->add_content( array() );
 	}
@@ -27,6 +37,12 @@ class Controller {
 	 * @return array
 	 */
 	function add_content( $content ) {
+		$content['page'] = array(
+			'title' => $this->title,
+			'css'   => array_merge( $this->view->get_css(), $this->css ),
+			'js'    => array_merge( $this->view->get_js(), $this->js ),
+		);
+
 		return $content;
 	}
 

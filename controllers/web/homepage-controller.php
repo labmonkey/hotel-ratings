@@ -14,13 +14,18 @@ class HomepageController extends Controller {
 		parent::__construct( $view );
 
 		$this->template = 'pages/homepage.twig';
+
+		$this->slug = 'homepage';
+
+		$this->title = 'Hotel Reviews';
 	}
 
 	function add_content( $content ) {
-		$users = db()->get_entity_manager()->getRepository( 'User' )->findAll();
+		$content = parent::add_content( $content );
+		$hotels  = db()->get_entity_manager()->getRepository( 'Hotel' )->findAll();
 
-		$content['users'] = $users;
-		
+		$content['hotels'] = $hotels;
+
 		return $content;
 	}
 }

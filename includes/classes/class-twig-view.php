@@ -33,6 +33,29 @@ class TwigView extends View {
 		) );
 	}
 
+	function get_js() {
+		if ( is_admin() ) {
+			return array();
+		} else {
+			return array(
+				"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js",
+				Config::getViewsUrl( 'web/assets/js/app.min.js' )
+			);
+		}
+	}
+
+	function get_css() {
+		if ( is_admin() ) {
+			return array();
+		} else {
+			return array(
+				"https://fonts.googleapis.com/css?family=Open+Sans:400,700|Gentium+Basic:400,700&subset=latin,latin-ext",
+				"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css",
+				Config::getViewsUrl( 'web/assets/css/app.min.css' )
+			);
+		}
+	}
+
 	/**
 	 * @param string $template
 	 * @param array $content

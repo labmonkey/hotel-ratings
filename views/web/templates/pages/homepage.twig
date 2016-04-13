@@ -1,3 +1,46 @@
-{% for user in users %}
-    {{ user.id }}
-{% endfor %}
+{% extends 'layout/base.twig' %}
+
+{% block content %}
+    <div class="container-fluid">
+        {% for hotel in hotels %}
+            <div class="row">
+                <figure class="col-sm-12">
+                    <div class="hotel-row">
+                        <div class="row">
+                            <figure class="col-sm-6">
+                                <div class="description">
+                                    <h2>{{ hotel.name }}</h2>
+                                    <div>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                    </div>
+                                    <p>{{ hotel.description }}</p>
+                                </div>
+                            </figure>
+                            <div class="hotel-footer">
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#review-hotel" data-name="Hotel Rock">Add review
+                                </button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#login-hotel"
+                                        data-name="Hotel Rock">Log in
+                                </button>
+                            </div>
+
+                            <figure class="col-sm-6">
+                                <div class="picture" style="background-image: url('assets/img/hotel-rock.jpg');">
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+                </figure>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% include 'components/modal-review.twig' %}
+    {% include 'components/modal-login.twig' %}
+{% endblock %}
