@@ -1,0 +1,48 @@
+.hotel-fragment {
+  background-color: #ffffff;
+  //height: 300px;
+  margin-bottom: 15px;
+  .hotel-content {
+    padding: 15px;
+    .hotel-description {
+      h2 {
+        margin-top: 0;
+        margin-bottom: 0.2em;
+        font-size: 2.5em;
+        display: inline;
+      }
+      p {
+        margin: 5px 0 10px 0;
+      }
+      .star-rating {
+        color: $color-p;
+        display: inline;
+        margin-left: 15px;
+      }
+    }
+    .hotel-footer {
+
+    }
+  }
+  .hotel-picture {
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+    &:before {
+      height: 200%;
+      width: 200px;
+      background: white;
+      content: "";
+      position: absolute;
+      left: -200px;
+      bottom: 0;
+      transform: rotate(30deg);
+      transform-origin: bottom right;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+.navbar-default {
+  font-family: $font1;
+  background: $color-m;
+  .navbar-nav {
+    & > li {
+      & > a {
+        color: $color-b;
+        &:focus, &:hover {
+          color: $color-b;
+          background-color: darken($color-m, 5%);
+        }
+      }
+    }
+  }
+  .navbar-brand {
+    color: $color-b;
+    text-transform: uppercase;
+    position: relative;
+    margin-right: 15px;
+    &:after {
+      content: "";
+      height: 2px;
+      width: 90%;
+      position: absolute;
+      bottom: 0.7em;
+      left: 5%;
+      background-color: $color-b;
+    }
+    &:focus, &:hover {
+      color: $color-b;
+      background-color: darken($color-m, 5%);
+    }
+  }
+}
+
+.btn {
+  font-family: $font1;
+  &.btn-primary {
+    background-color: #C1134D;
+    border: 0;
+  }
+}

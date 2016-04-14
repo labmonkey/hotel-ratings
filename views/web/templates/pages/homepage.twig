@@ -1,46 +1,40 @@
 {% extends 'layout/base.twig' %}
 
 {% block content %}
-    <div class="container-fluid">
+    <div class="container">
         {% for hotel in hotels %}
-            <div class="row">
-                <figure class="col-sm-12">
-                    <div class="hotel-row">
-                        <div class="row">
-                            <figure class="col-sm-6">
-                                <div class="description">
-                                    <h2>{{ hotel.name }}</h2>
-                                    <div>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                    </div>
-                                    <p>{{ hotel.description }}</p>
+            <div class="hotel-fragment">
+                <div class="row">
+                    <figure class="col-sm-6">
+                        <div class="hotel-content">
+                            <div class="hotel-description">
+                                <h2>{{ hotel.name }}</h2>
+                                <div class="star-rating">
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
                                 </div>
-                            </figure>
+                                <p>{{ hotel.description }}</p>
+                            </div>
                             <div class="hotel-footer">
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#review-hotel" data-name="Hotel Rock">Add review
-                                </button>
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#login-hotel"
-                                        data-name="Hotel Rock">Log in
+                                        data-target="#modal-review" data-id="{{ hotel.id }}"
+                                        data-name="{{ hotel.name }}">Add review
                                 </button>
                             </div>
-
-                            <figure class="col-sm-6">
-                                <div class="picture" style="background-image: url('assets/img/hotel-rock.jpg');">
-                                </div>
-                            </figure>
                         </div>
-                    </div>
-                </figure>
+                    </figure>
+
+                    <figure class="col-sm-6">
+                        <div class="hotel-picture" style="background-image: url('assets/img/hotel-rock.jpg');">
+                        </div>
+                    </figure>
+                </div>
             </div>
         {% endfor %}
     </div>
 
     {% include 'components/modal-review.twig' %}
-    {% include 'components/modal-login.twig' %}
 {% endblock %}

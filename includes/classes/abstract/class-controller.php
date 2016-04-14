@@ -43,6 +43,10 @@ class Controller {
 			'js'    => array_merge( $this->view->get_js(), $this->js ),
 		);
 
+		$content['site'] = array(
+			'name' => 'Hotel reviews'
+		);
+
 		return $content;
 	}
 

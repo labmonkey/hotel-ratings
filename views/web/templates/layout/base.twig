@@ -1,4 +1,10 @@
-{% include 'layout/header.twig' %}
-{% block content %}
-{% endblock %}
-{% include 'layout/footer.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'layout/head.twig' %}
+<body class="list-page">
+    {% include 'layout/navbar.twig' %}
+    {% block content %}
+    {% endblock %}
+    {% include 'layout/footer.twig' %}
+</body>
+</html>
