@@ -40,7 +40,6 @@ class TwigView extends View {
 			return array();
 		} else {
 			return array(
-				"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js",
 				Config::getViewsUrl( 'web/assets/js/app.min.js' )
 			);
 		}

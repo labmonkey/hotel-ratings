@@ -3,3 +3,10 @@ body {
   background-color: #F4F4EF;
   font-family: $font2;
 }
+
+.star-rating {
+  color: $color-p;
+  &.--selectable {
+    cursor: pointer;
+  }
+}

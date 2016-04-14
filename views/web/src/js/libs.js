@@ -3,3 +3,5 @@
  */
 
 //=require ../../../bower_components/jquery/dist/jquery.js
+//=require ../../../bower_components/bootstrap/dist/js/bootstrap.min.js
+//=require ../../../bower_components/bootstrap-validator/dist/validator.min.js

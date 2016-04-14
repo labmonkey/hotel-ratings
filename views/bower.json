@@ -18,6 +18,7 @@
   "devDependencies": {
     "jquery": "~2.1.4",
     "admin-lte": "~2.3.3",
-    "bootstrap-validator": "~0.10.2"
+    "bootstrap-validator": "~0.10.2",
+    "bootstrap": "~3.3.2"
   }
 }
