@@ -10,6 +10,12 @@ Hotel:
     name:
       type: string
       length: 50
+      nullable: true
     description:
       type: string
       length: 150
+      nullable: true
+    image:
+      type: string
+      length: 200
+      nullable: true

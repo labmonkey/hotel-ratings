@@ -23,7 +23,7 @@ class Loader {
 	}
 
 	function load_config( $root ) {
-		include_once 'config/config.php';
+		include_once 'app-config.php';
 		include_once 'classes/static/class-config.php';
 
 		new Config( $root, APP_URL );

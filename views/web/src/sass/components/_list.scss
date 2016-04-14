@@ -1,10 +1,16 @@
+$hotel-fragment-height: 200px;
+
 .hotel-fragment {
   background-color: #ffffff;
-  //height: 300px;
+  height: $hotel-fragment-height;
   margin-bottom: 15px;
   .hotel-content {
     padding: 15px;
+    height: $hotel-fragment-height;
     .hotel-description {
+      padding-bottom: 47px;
+      position: relative;
+      height: 100%;
       h2 {
         margin-top: 0;
         margin-bottom: 0.2em;
@@ -19,13 +25,16 @@
         display: inline;
         margin-left: 15px;
       }
-    }
-    .hotel-footer {
-
+      .hotel-footer {
+        margin-top: 15px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+      }
     }
   }
   .hotel-picture {
-    height: 100%;
+    height: $hotel-fragment-height;
     background-position: center;
     background-size: cover;
     position: relative;

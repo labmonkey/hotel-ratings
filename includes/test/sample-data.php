@@ -16,15 +16,18 @@ if ( LOAD_SAMPLE_DATA === false ) {
 $hotels = array(
 	array(
 		'name'        => 'Hotel Rock',
-		'description' => 'Excellent business hotel. Close to the city center and public transportation. New facilities and friendly service. Fair breakfast prices. Popular among solo travelers.'
+		'description' => 'Excellent business hotel. Close to the city center and public transportation. New facilities and friendly service. Fair breakfast prices. Popular among solo travelers.',
+		'image'       => 'hotel-rock.jpg'
 	),
 	array(
 		'name'        => 'Hotel Jazz',
-		'description' => 'Very good luxury hotel. Close to Starbucks. Close to public transportation and the train station. Awesome terrace. Nice sauna. Bar is awesome. Popular among business travelers.'
+		'description' => 'Very good luxury hotel. Close to Starbucks. Close to public transportation and the train station. Awesome terrace. Nice sauna. Bar is awesome. Popular among business travelers.',
+		'image'       => 'hotel-jazz.jpg'
 	),
 	array(
 		'name'        => 'Hotel Pop',
-		'description' => 'Excellent city hotel. Close to restaurants, bars and train stations. Free internet. Clean hotel facilities. Great reception. Popular among solo travelers.'
+		'description' => 'Excellent city hotel. Close to restaurants, bars and train stations. Free internet. Clean hotel facilities. Great reception. Popular among solo travelers.',
+		'image'       => 'hotel-pop.jpg'
 	)
 );
 
@@ -32,6 +35,7 @@ foreach ( $hotels as $data ) {
 	$hotel = new Hotel();
 	$hotel->setName( $data['name'] );
 	$hotel->setDescription( $data['description'] );
+	$hotel->setImage( $data['image'] );
 
 	db()->save( $hotel );
 }

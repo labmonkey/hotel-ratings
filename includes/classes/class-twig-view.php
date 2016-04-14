@@ -31,6 +31,8 @@ class TwigView extends View {
 			'cache' => false
 			//'cache' => Config::getRootDir( 'cache' ),
 		) );
+
+		$this->filters();
 	}
 
 	function get_js() {
@@ -62,5 +64,19 @@ class TwigView extends View {
 	 */
 	function render( $template, $content ) {
 		echo $this->twig->render( $template, $content );
+	}
+
+	function filters() {
+		$filters = array(
+			new Twig_SimpleFilter( 'uploads', array( $this, 'filter_uploads' ) )
+		);
+
+		foreach ( $filters as $filter ) {
+			$this->twig->addFilter( $filter );
+		}
+	}
+
+	function filter_uploads( $file ) {
+		return Config::getUploadsUrl( $file );
 	}
 }

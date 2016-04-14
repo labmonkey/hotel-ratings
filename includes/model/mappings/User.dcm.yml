@@ -10,17 +10,22 @@ User:
     first_name:
       type: string
       length: 50
+      nullable: true
     last_name:
       type: string
       length: 50
+      nullable: true
     email:
       type: string
       length: 32
       unique: true
+      nullable: true
       options:
         fixed: true
     password:
       type: string
       length: 100
+      nullable: true
     admin:
       type: boolean
+      nullable: true

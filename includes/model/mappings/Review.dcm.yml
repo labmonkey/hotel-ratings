@@ -10,9 +10,11 @@ Review:
     rating:
       type: integer
       length: 1
+      nullable: true
     message:
       type: string
       length: 500
+      nullable: true
   manyToOne:
     reviewer:
       targetEntity: User
