@@ -13,7 +13,7 @@ class HomepageController extends Controller {
 	function __construct( $view ) {
 		parent::__construct( $view );
 
-		$this->template = 'pages/homepage.twig';
+		$this->template = '@web/pages/homepage.twig';
 
 		$this->slug = 'homepage';
 

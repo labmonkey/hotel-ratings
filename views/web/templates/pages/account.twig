@@ -1,4 +1,4 @@
-{% extends 'layout/base.twig' %}
+{% extends '@web/layout/base.twig' %}
 
 {% block content %}
     <div class="container">
@@ -23,7 +23,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <span class="meta meta-rating">
-                                            <b>Rating:</b> {% include 'components/star-rating.twig' with { 'rating' : 2 } %}
+                                            <b>Rating:</b> {% include '@web/components/star-rating.twig' with { 'rating' : 2 } %}
                                         </span>
                                         <span class="meta meta-hotel">
                                             <b>Hotel: </b> Hotel Rock

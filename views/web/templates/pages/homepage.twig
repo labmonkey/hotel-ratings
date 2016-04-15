@@ -1,4 +1,4 @@
-{% extends 'layout/base.twig' %}
+{% extends '@web/layout/base.twig' %}
 
 {% block content %}
     <div class="container">
@@ -9,7 +9,7 @@
                         <div class="hotel-content">
                             <div class="hotel-description">
                                 <h2>{{ hotel.name }}</h2>
-                                {% include 'components/star-rating.twig' with { 'rating' : 2 } %}
+                                {% include '@web/components/star-rating.twig' with { 'rating' : 2 } %}
                                 <p>{{ hotel.description }}</p>
                                 <div class="hotel-footer">
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -30,5 +30,5 @@
         {% endfor %}
     </div>
 
-    {% include 'components/modal-review.twig' %}
+    {% include '@web/components/modal-review.twig' %}
 {% endblock %}

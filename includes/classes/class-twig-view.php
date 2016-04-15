@@ -16,18 +16,11 @@ class TwigView extends View {
 	private $loader;
 
 	function init() {
-		if ( is_admin() ) {
-			$paths = array(
-				Config::getViewsDir( 'admin/templates' )
-			);
-		} else {
-			$paths = array(
-				Config::getViewsDir( 'web/templates' )
-			);
-		}
+		$this->loader = new Twig_Loader_Filesystem();
+		$this->loader->addPath( Config::getViewsDir( 'admin/templates' ), 'admin' );
+		$this->loader->addPath( Config::getViewsDir( 'web/templates' ), 'web' );
 
-		$this->loader = new Twig_Loader_Filesystem( $paths );
-		$this->twig   = new Twig_Environment( $this->loader, array(
+		$this->twig = new Twig_Environment( $this->loader, array(
 			'cache' => false
 			//'cache' => Config::getRootDir( 'cache' ),
 		) );
@@ -36,25 +29,28 @@ class TwigView extends View {
 	}
 
 	function get_js() {
+		$js = array(
+			Config::getViewsUrl( 'web/assets/js/app.min.js' )
+		);
 		if ( is_admin() ) {
-			return array();
-		} else {
-			return array(
-				Config::getViewsUrl( 'web/assets/js/app.min.js' )
-			);
+			$js = array_merge( $js, array() );
 		}
+
+		return $js;
 	}
 
 	function get_css() {
+		$css = array(
+			"https://fonts.googleapis.com/css?family=Open+Sans:400,700|Gentium+Basic:400,700&subset=latin,latin-ext",
+			"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css",
+			Config::getViewsUrl( 'web/assets/css/app.min.css' )
+		);
+
 		if ( is_admin() ) {
-			return array();
-		} else {
-			return array(
-				"https://fonts.googleapis.com/css?family=Open+Sans:400,700|Gentium+Basic:400,700&subset=latin,latin-ext",
-				"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css",
-				Config::getViewsUrl( 'web/assets/css/app.min.css' )
-			);
+			$css = array_merge( $css, array() );
 		}
+
+		return $css;
 	}
 
 	/**
