@@ -36,15 +36,20 @@ $(document).ready(function () {
         });
     });
 
-    $('.form-register, .form-login').validator({
+    $('form.--validator').validator({
         custom: {
             'maxlength': function ($el) {
                 var maxlength = $el.data('maxlength');
-                return !$el.val() || $el.val().length <= maxlength
+                return !$el.val() || $el.val().length <= maxlength;
+            },
+            'pattern': function ($el) {
+                var pattern = $el.data('pattern');
+                return !$el.val() || new RegExp(pattern, "g").test($el.val());
             }
         },
         errors: {
-            'maxlength': "Too long"
+            'maxlength': "Too long",
+            'pattern': "Invalid password"
         }
     });
 });

@@ -43,6 +43,7 @@ class Loader {
 
 		$controllers = array(
 			'controllers/web/homepage-controller.php',
+			'controllers/web/account-controller.php',
 			'controllers/error-controller.php',
 			'controllers/admin/admin-controller.php',
 		);

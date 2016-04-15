@@ -20,8 +20,9 @@ class RequestCoordinator {
 
 	function init_controller_map() {
 		$this->controllers = array(
-			"/"      => "HomepageController",
-			"/admin" => "AdminController"
+			"/"        => "HomepageController",
+			"/admin"   => "AdminController",
+			"/account" => "AccountController"
 		);
 	}
 

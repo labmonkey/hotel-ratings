@@ -8,7 +8,7 @@
             <div class="modal-body">
                 <div class="row">
                     <figure class="col-sm-6 col-md-5 col-md-offset-1">
-                        <form class="form-login">
+                        <form class="form form-login --validator">
                             <h2 class="form-signin-heading">Log in</h2>
                             <div class="form-group">
                                 <label for="inputEmail" class="sr-only">Email address</label>
@@ -27,38 +27,44 @@
                     </figure>
 
                     <figure class="col-sm-6 col-md-5">
-                        <form class="form-register">
+                        <form class="form form-register --validator">
                             <h2 class="form-signin-heading">Register</h2>
-                            <div class="form-group">
+                            <div class="form-group has-feedback">
                                 <label for="first_name" class="sr-only">First Name</label>
                                 <input id="first_name" type="text" name="first_name" class="form-control"
                                        placeholder="First Name" data-maxlength="100"
                                        required data-maxlength-error="Maximum of 100 characters">
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group has-feedback">
                                 <label for="first_name" class="sr-only">Last Name</label>
                                 <input id="last_name" type="text" name="last_name" class="form-control"
                                        placeholder="Last Name" data-maxlength="100"
                                        required data-maxlength-error="Maximum of 100 characters">
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group has-feedback">
                                 <label for="email" class="sr-only">Email address</label>
                                 <input id="email" type="email" name="email" class="form-control"
                                        placeholder="Email address"
                                        required data-error="Please enter a valid email address">
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group has-feedback">
                                 <label id="password" for="password" class="sr-only">Password</label>
                                 <input id="passwordField" type="password" name="password" class="form-control"
-                                       placeholder="Password"
-                                       required data-error="Password should have 8 characters and contain a number">
+                                       placeholder="Password" data-pattern="(?=.*\d)" data-minlength="8"
+                                       required
+                                       data-error="Password should have at least 8 characters and contain a number">
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group has-feedback">
                                 <label for="password-repeat" class="sr-only">Repeat password</label>
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <input id="password-repeat" type="password" name="password-repeat" class="form-control"
                                        placeholder="Repeat password" required data-match="#passwordField">
                                 <div class="help-block with-errors"></div>

@@ -1,0 +1,8 @@
+<div class="star-rating {% if input is defined %}--selectable{% endif %}"
+     {% if rating is defined %}data-rating="{{ rating }}"{% endif %}
+        {% if input is defined %}data-input="{{ input }}"{% endif %}
+>
+    {% for i in 1..5 %}
+        <span class="glyphicon glyphicon-star{% if loop.index > rating %}-empty{% endif %}"></span>
+    {% endfor %}
+</div>

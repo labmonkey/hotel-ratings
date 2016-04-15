@@ -1,0 +1,12 @@
+.box {
+  background: white;
+  padding: 15px;
+  & > h4 {
+    margin-top: 0;
+    margin-bottom: 1em;
+    padding-bottom: 0.2em;
+    border-bottom: 2px solid $color-bg;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
