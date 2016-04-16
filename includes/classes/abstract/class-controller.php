@@ -44,7 +44,8 @@ class Controller {
 		);
 
 		$content['site'] = array(
-			'name' => 'Hotel reviews'
+			'name' => 'Hotel reviews',
+			'user' => session()->get_current_user()
 		);
 
 		return $content;

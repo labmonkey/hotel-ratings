@@ -29,6 +29,10 @@ function db() {
 	return app()->getModel();
 }
 
+function session() {
+	return app()->getSession();
+}
+
 function is_admin() {
 	return app()->is_admin();
 }

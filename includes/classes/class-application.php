@@ -21,14 +21,20 @@ class Application {
 	/* @var Model */
 	private $model;
 
+	/* @var SessionManager */
+	private $session;
+
 	function __construct() {
-		$this->view  = new TwigView();
+		$this->view = new TwigView();
 
 		global $entityManager;
-		$this->model = new DoctrineModel($entityManager);
+		$this->model = new DoctrineModel( $entityManager );
 	}
 
 	function init() {
+		$this->session  = new SessionManager();
+		$authentication = new Authentication();
+
 		$path              = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
 		$this->coordinator = new RequestCoordinator( $path );
 		$this->controller  = $this->coordinator->get_controller( $path );
@@ -48,5 +54,9 @@ class Application {
 
 	function is_admin() {
 		return $this->coordinator->is_admin();
+	}
+
+	function getSession() {
+		return $this->session;
 	}
 }

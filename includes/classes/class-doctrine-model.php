@@ -61,4 +61,8 @@ class DoctrineModel extends Model {
 	function load( $table, $ID ) {
 		return $this->entityManager->find( $table, $ID );
 	}
+
+	function getTable( $table ) {
+		return $this->get_entity_manager()->getRepository( $table );
+	}
 }

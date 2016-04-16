@@ -38,7 +38,9 @@ class Loader {
 			'includes/classes/class-application.php',
 			'includes/classes/class-twig-view.php',
 			'includes/classes/class-request-coordinator.php',
-			'includes/classes/class-doctrine-model.php'
+			'includes/classes/class-doctrine-model.php',
+			'includes/classes/class-session-manager.php',
+			'includes/classes/class-authentication.php'
 		);
 
 		$controllers = array(

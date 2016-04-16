@@ -51,7 +51,7 @@ $users = array(
 	array(
 		'first_name' => 'Joey',
 		'last_name'  => 'Test',
-		'email'      => 'john@test.com',
+		'email'      => 'joey@test.com',
 		'password'   => 'password1',
 		'admin'      => false
 	),
