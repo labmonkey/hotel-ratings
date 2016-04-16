@@ -74,4 +74,12 @@ class TwigView extends View {
 	function filter_uploads( $file ) {
 		return Config::getUploadsUrl( $file );
 	}
+
+	static function webTemplate( $path ) {
+		return "@web/$path";
+	}
+
+	static function adminTemplate( $path ) {
+		return "@admin/$path";
+	}
 }

@@ -13,7 +13,7 @@ class AccountController extends Controller {
 	function __construct( $view ) {
 		parent::__construct( $view );
 
-		$this->template = '@web/pages/account.twig';
+		$this->template = TwigView::webTemplate( '/pages/account.twig' );
 
 		$this->slug = 'account';
 

@@ -57,7 +57,8 @@ $hotel-fragment-height: 200px;
 
 .review-fragment {
   border-bottom: 1px solid #f4f4ef;
-  margin: 15px auto;
+  margin: 0 0 15px;
+  padding: 0 0 15px;
   .meta {
     font-family: $font1;
     .star-rating {

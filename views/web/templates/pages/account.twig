@@ -8,32 +8,7 @@
                     <section class="box box-reviews">
                         <h4>My reviews</h4>
                         {% for i in 1..5 %}
-                            <div class="review-fragment">
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <span class="meta meta-title">User <b>pawel</b> added review at
-                                                <b>12.12.1234</b>
-                                        </span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <span class="meta meta-status">
-                                            <span class="label label-danger"
-                                                  title="This review has been changed by moderator">Moderated</span>
-                                        </span>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <span class="meta meta-rating">
-                                            <b>Rating:</b> {% include '@web/components/star-rating.twig' with { 'rating' : 2 } %}
-                                        </span>
-                                        <span class="meta meta-hotel">
-                                            <b>Hotel: </b> Hotel Rock
-                                        </span>
-                                    </div>
-                                </div>
-                                <p>
-                                    comment
-                                </p>
-                            </div>
+                            {% include '@web/content/review-fragment.twig' %}
                         {% endfor %}
                     </section>
                 </div>

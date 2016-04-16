@@ -13,7 +13,7 @@ class AdminController extends Controller {
 	function __construct( $view ) {
 		parent::__construct( $view );
 
-		$this->template = '@admin/pages/admin.twig';
+		$this->template = TwigView::adminTemplate('pages/admin.twig');
 	}
 
 	function add_content( $content ) {

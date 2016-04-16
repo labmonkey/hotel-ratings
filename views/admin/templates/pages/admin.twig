@@ -3,6 +3,17 @@
 {% block content %}
     <div class="container">
         <div class="page-wrapper">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box">
+                        <h4>Reviews</h4>
+                        {% for i in 1..5 %}
+                            {% include '@admin/content/review-fragment-admin.twig' %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    {% include '@admin/components/modal-review-form.twig' %}
 {% endblock %}
