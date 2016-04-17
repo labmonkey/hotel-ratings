@@ -1,0 +1,13 @@
+{% if site.messages %}
+    <ul>
+        {% for message in messages %}
+            {% if message is iterable %}
+                {% for submessage in message %}
+                    <li>{{ submessage }}</li>
+                {% endfor %}
+            {% else %}
+                <li>{{ message }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endif %}

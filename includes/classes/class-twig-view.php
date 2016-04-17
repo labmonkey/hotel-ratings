@@ -21,10 +21,12 @@ class TwigView extends View {
 		$this->loader->addPath( Config::getViewsDir( 'web/templates' ), 'web' );
 
 		$this->twig = new Twig_Environment( $this->loader, array(
-			'cache' => false
+			'cache' => false,
 			//'cache' => Config::getRootDir( 'cache' ),
+			'debug' => true,
 		) );
 
+		$this->twig->addExtension(new Twig_Extension_Debug());
 		$this->filters();
 	}
 

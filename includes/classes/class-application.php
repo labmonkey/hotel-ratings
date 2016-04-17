@@ -24,6 +24,9 @@ class Application {
 	/* @var SessionManager */
 	private $session;
 
+	/* @var Authentication */
+	private $authentication;
+
 	function __construct() {
 		$this->view = new TwigView();
 
@@ -32,8 +35,8 @@ class Application {
 	}
 
 	function init() {
-		$this->session  = new SessionManager();
-		$authentication = new Authentication();
+		$this->session        = new SessionManager();
+		$this->authentication = new Authentication();
 
 		$path              = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
 		$this->coordinator = new RequestCoordinator( $path );
@@ -58,5 +61,9 @@ class Application {
 
 	function getSession() {
 		return $this->session;
+	}
+
+	function getAuthentication() {
+		return $this->authentication;
 	}
 }

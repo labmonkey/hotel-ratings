@@ -29,6 +29,8 @@ class Controller {
 		$this->slug = '';
 
 		$this->content = $this->add_content( array() );
+
+		$this->handleForms( get_col( $_POST, 'action' ), $_POST );
 	}
 
 	/**
@@ -44,8 +46,18 @@ class Controller {
 		);
 
 		$content['site'] = array(
-			'name' => 'Hotel reviews',
-			'user' => session()->get_current_user()
+			'name' => 'Hotel reviews'
+		);
+
+		if ( session()->is_user_logged_in() ) {
+			$content['user'] = session()->get_current_user();
+		}
+
+		$content['pages'] = array(
+			'account' => Config::getRootUrl( 'account' ),
+			'logout'  => Config::getRootUrl( '?action=logout' ),
+			'admin'   => Config::getAdminUrl(),
+			'web'     => Config::getRootUrl()
 		);
 
 		return $content;
@@ -53,5 +65,9 @@ class Controller {
 
 	function display() {
 		$this->view->render( $this->template, $this->content );
+	}
+
+	function handleForms( $action, $data ) {
+
 	}
 }

@@ -21,12 +21,17 @@ class SessionManager {
 		return ! empty( $this->get_current_user() );
 	}
 
+
+	/**
+	 * @return User|bool
+	 */
 	function get_current_user() {
 		if ( ! empty( $this->user ) ) {
 			return $this->user;
 		}
 		if ( isset( $_SESSION['user'] ) ) {
 			$this->user = $_SESSION['user'];
+
 			return $this->user;
 		}
 
@@ -55,6 +60,14 @@ class SessionManager {
 	}
 
 	function get( $key ) {
+		return $_SESSION[ $key ];
+	}
 
+	function addMessages( $messages ) {
+		$this->set( 'messages', $messages );
+	}
+
+	function getMessages() {
+		return $this->get( 'messages' );
 	}
 }

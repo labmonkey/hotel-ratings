@@ -58,6 +58,11 @@ class DoctrineModel extends Model {
 		$this->entityManager->flush();
 	}
 
+	function update( $object ) {
+		$this->entityManager->merge( $object );
+		$this->entityManager->flush();
+	}
+
 	function load( $table, $ID ) {
 		return $this->entityManager->find( $table, $ID );
 	}

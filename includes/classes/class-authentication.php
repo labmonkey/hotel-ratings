@@ -16,12 +16,12 @@ class Authentication {
 	}
 
 	function init() {
-		if ( isset( $_POST["action"] ) ) {
-			if ( $_POST["action"] == "login" ) {
-				$this->handleLogin( $_POST );
-			} else if ( $_POST["action"] == "register" ) {
-				$this->handleRegistration( $_POST );
-			} else if ( $_POST["action"] == "logout" ) {
+		if ( isset( $_REQUEST["action"] ) ) {
+			if ( $_REQUEST["action"] == "login" ) {
+				$this->handleLogin( $_REQUEST );
+			} else if ( $_REQUEST["action"] == "register" ) {
+				$this->handleRegistration( $_REQUEST );
+			} else if ( $_REQUEST["action"] == "logout" ) {
 				$this->logout();
 			}
 		}
@@ -62,7 +62,7 @@ class Authentication {
 		);
 
 		if ( ! empty( $messages = $this->validateLogin( $data ) ) ) {
-
+			session()->addMessages( $messages );
 		} else {
 			$user = db()->getTable( 'User' )->findOneBy( array( 'email' => $data['email'] ) );
 
@@ -73,6 +73,7 @@ class Authentication {
 				}
 			} else {
 				$messages['login'] = "User doesn't exist";
+				session()->addMessages( $messages );
 			}
 		}
 	}
@@ -87,7 +88,7 @@ class Authentication {
 		);
 
 		if ( ! empty( $messages = $this->validateRegistration( $data ) ) ) {
-
+			session()->addMessages( $messages );
 		} else {
 			$this->register( $data );
 		}
