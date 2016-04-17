@@ -24,8 +24,25 @@ class HomepageController extends Controller {
 		$content = parent::add_content( $content );
 		$hotels  = db()->get_entity_manager()->getRepository( 'Hotel' )->findAll();
 
+		$user = session()->get_current_user();
+
 		foreach ( $hotels as &$hotel ) {
-			$hotel->rating = $this->calculate_rating( $hotel );
+			$hotel->rating   = $this->calculate_rating( $hotel );
+			$hotel->reviewed = false;
+
+			foreach ( $hotel->getReviews() as $review ) {
+				$hotel->reviewsalt[] = array(
+					'id'        => $review->getId(),
+					'rating'    => $review->getRating(),
+					'hotel'     => $review->getHotel(),
+					'text'      => $review->getMessage(),
+					'user'      => $review->getReviewer(),
+					'moderated' => $review->getModerated()
+				);
+				if ( $user && ( $review->getReviewer()->getId() == $user->getId() ) ) {
+					$hotel->reviewed = true;
+				}
+			}
 		}
 
 		$content['hotels'] = $hotels;
@@ -44,7 +61,7 @@ class HomepageController extends Controller {
 			$review->setRating( $data['rating'] );
 			$review->setMessage( $data['message'] );
 			$review->setHotel( $hotel );
-			$review->setModerated(false);
+			$review->setModerated( false );
 
 			db()->update( $review );
 		}

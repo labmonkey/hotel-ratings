@@ -54,6 +54,19 @@ $(document).ready(function () {
             'pattern': "Invalid password"
         }
     });
+
+    $('#modal-reviews').on('show.bs.modal', function (event) {
+        var modal = $(this);
+        var button = $(event.relatedTarget);
+        var parent = button.closest('.hotel-fragment');
+
+        var name = button.data('name');
+        modal.find('.modal-title').html('Reviews for <b>' + name + '</b>');
+
+        var reviews = parent.find('.hotel-reviews').html();
+
+        modal.find('.modal-body').html(reviews);
+    });
 });
 
 function setRating(container, rating) {

@@ -13,9 +13,15 @@
                                 ({{ hotel.reviews|length }} reviews)
                                 <p>{{ hotel.description }}</p>
                                 <div class="hotel-footer">
+                                    {% if not hotel.reviewed %}
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#modal-review" data-id="{{ hotel.id }}"
+                                                data-name="{{ hotel.name }}">Add review
+                                        </button>
+                                    {% endif %}
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#modal-review" data-id="{{ hotel.id }}"
-                                            data-name="{{ hotel.name }}">Add review
+                                            data-target="#modal-reviews" data-id="{{ hotel.id }}"
+                                            data-name="{{ hotel.name }}">Show reviews
                                     </button>
                                 </div>
                             </div>
@@ -27,9 +33,15 @@
                         </div>
                     </figure>
                 </div>
+                <div class="hidden hotel-reviews">
+                    {% for review in hotel.reviewsalt %}
+                        {% include '@web/content/review-fragment.twig' %}
+                    {% endfor %}
+                </div>
             </div>
         {% endfor %}
     </div>
 
     {% include '@web/components/modal-review.twig' %}
+    {% include '@web/components/modal-reviews.twig' %}
 {% endblock %}
