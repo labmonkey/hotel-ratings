@@ -1,9 +1,11 @@
 <div class="review-fragment">
     <div class="row">
         <div class="col-md-8">
-            <span class="meta meta-title">
-                User <b>{{ review.user }}</b> added review at <b>{{ review.date }}</b>
-            </span>
+            {% block title %}
+                <span class="meta meta-title">
+                    User <b>{{ review.user.firstname }} {{ review.user.lastname }}</b> added review
+                </span>
+            {% endblock %}
         </div>
         <div class="col-md-4">
             {% block status %}
@@ -14,7 +16,7 @@
                 <b>Rating:</b> {% include '@web/components/star-rating.twig' with { 'rating' : review.rating } %}
             </span>
             <span class="meta meta-hotel">
-                <b>Hotel: </b> {{ review.hotel }}
+                <b>Hotel: </b> {{ review.hotel.name }}
             </span>
         </div>
     </div>

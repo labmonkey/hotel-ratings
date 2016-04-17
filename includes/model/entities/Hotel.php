@@ -24,6 +24,16 @@ class Hotel
      */
     private $description;
 
+    /**
+     * @var string
+     */
+    private $image;
+
+    /**
+     * @var string
+     */
+    private $oneToMany;
+
 
     /**
      * Get id
@@ -80,11 +90,6 @@ class Hotel
     {
         return $this->description;
     }
-    /**
-     * @var string
-     */
-    private $image;
-
 
     /**
      * Set image
@@ -107,5 +112,73 @@ class Hotel
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set oneToMany
+     *
+     * @param string $oneToMany
+     * @return Hotel
+     */
+    public function setOneToMany($oneToMany)
+    {
+        $this->oneToMany = $oneToMany;
+
+        return $this;
+    }
+
+    /**
+     * Get oneToMany
+     *
+     * @return string 
+     */
+    public function getOneToMany()
+    {
+        return $this->oneToMany;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $reviews;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->reviews = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add reviews
+     *
+     * @param \Review $reviews
+     * @return Hotel
+     */
+    public function addReview(\Review $reviews)
+    {
+        $this->reviews[] = $reviews;
+
+        return $this;
+    }
+
+    /**
+     * Remove reviews
+     *
+     * @param \Review $reviews
+     */
+    public function removeReview(\Review $reviews)
+    {
+        $this->reviews->removeElement($reviews);
+    }
+
+    /**
+     * Get reviews
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getReviews()
+    {
+        return $this->reviews;
     }
 }

@@ -25,9 +25,19 @@ class Review
     private $message;
 
     /**
+     * @var boolean
+     */
+    private $moderated;
+
+    /**
      * @var \User
      */
     private $reviewer;
+
+    /**
+     * @var \Hotel
+     */
+    private $hotel;
 
 
     /**
@@ -87,6 +97,29 @@ class Review
     }
 
     /**
+     * Set moderated
+     *
+     * @param boolean $moderated
+     * @return Review
+     */
+    public function setModerated($moderated)
+    {
+        $this->moderated = $moderated;
+
+        return $this;
+    }
+
+    /**
+     * Get moderated
+     *
+     * @return boolean 
+     */
+    public function getModerated()
+    {
+        return $this->moderated;
+    }
+
+    /**
      * Set reviewer
      *
      * @param \User $reviewer
@@ -107,5 +140,28 @@ class Review
     public function getReviewer()
     {
         return $this->reviewer;
+    }
+
+    /**
+     * Set hotel
+     *
+     * @param \Hotel $hotel
+     * @return Review
+     */
+    public function setHotel(\Hotel $hotel = null)
+    {
+        $this->hotel = $hotel;
+
+        return $this;
+    }
+
+    /**
+     * Get hotel
+     *
+     * @return \Hotel 
+     */
+    public function getHotel()
+    {
+        return $this->hotel;
     }
 }

@@ -30,7 +30,7 @@ class SessionManager {
 			return $this->user;
 		}
 		if ( isset( $_SESSION['user'] ) ) {
-			$this->user = $_SESSION['user'];
+			$this->user = db()->load( 'User', $_SESSION['user'] );
 
 			return $this->user;
 		}
@@ -40,7 +40,7 @@ class SessionManager {
 
 	function set_current_user( $user ) {
 		$this->user = $user;
-		$this->set( 'user', $user );
+		$this->set( 'user', $user->getId() );
 	}
 
 	function start() {

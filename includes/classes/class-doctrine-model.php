@@ -56,6 +56,7 @@ class DoctrineModel extends Model {
 	function save( $object ) {
 		$this->entityManager->persist( $object );
 		$this->entityManager->flush();
+		return $object;
 	}
 
 	function update( $object ) {

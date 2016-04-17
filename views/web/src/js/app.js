@@ -17,6 +17,8 @@ $(document).ready(function () {
         modal.find('input[name="id"]').val(id);
         var stars = modal.find(".star-rating.--selectable");
         setRating(stars, 1);
+
+        modal.find('#message-text').val('');
     });
 
     $(".star-rating.--selectable").each(function () {

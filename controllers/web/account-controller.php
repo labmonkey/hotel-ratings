@@ -23,6 +23,19 @@ class AccountController extends Controller {
 	function add_content( $content ) {
 		$content = parent::add_content( $content );
 
+		$reviews = session()->get_current_user()->getReviews();
+		
+		foreach ( $reviews as $review ) {
+			$content['reviews'][] = array(
+				'id'        => $review->getId(),
+				'rating'    => $review->getRating(),
+				'hotel'     => $review->getHotel(),
+				'text'      => $review->getMessage(),
+				'user'      => $review->getReviewer(),
+				'moderated' => $review->getModerated()
+			);
+		}
+
 		return $content;
 	}
 

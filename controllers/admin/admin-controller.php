@@ -17,12 +17,37 @@ class AdminController extends Controller {
 
 		$this->title = 'Administration area';
 
-		$this->template = TwigView::adminTemplate('pages/admin.twig');
+		$this->template = TwigView::adminTemplate( 'pages/admin.twig' );
 	}
 
 	function add_content( $content ) {
 		$content = parent::add_content( $content );
-		
+
+		$reviews = db()->getTable( 'Review' )->findBy( array( 'moderated' => false ) );
+
+		foreach ( $reviews as $review ) {
+			$content['reviews'][] = array(
+				'id'        => $review->getId(),
+				'rating'    => $review->getRating(),
+				'hotel'     => $review->getHotel(),
+				'text'      => $review->getMessage(),
+				'user'      => $review->getReviewer(),
+				'moderated' => $review->getModerated()
+			);
+		}
+
 		return $content;
+	}
+
+	function handleForms( $action, $data ) {
+		parent::handleForms( $action, $data );
+		if ( $action === 'moderate-review' ) {
+			$review = db()->load( 'Review', $data['id'] );
+
+			$review->setMessage( $data['message'] );
+			$review->setModerated( true );
+
+			db()->update( $review );
+		}
 	}
 }

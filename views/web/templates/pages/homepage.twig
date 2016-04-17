@@ -9,7 +9,8 @@
                         <div class="hotel-content">
                             <div class="hotel-description">
                                 <h2>{{ hotel.name }}</h2>
-                                {% include '@web/components/star-rating.twig' with { 'rating' : 2 } %}
+                                {% include '@web/components/star-rating.twig' with { 'rating' : hotel.rating } %}
+                                ({{ hotel.reviews|length }} reviews)
                                 <p>{{ hotel.description }}</p>
                                 <div class="hotel-footer">
                                     <button type="button" class="btn btn-primary" data-toggle="modal"

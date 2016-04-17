@@ -20,7 +20,7 @@ class RequestCoordinator {
 
 	function init_controller_map() {
 		$this->controllers = array(
-			"/"         => "HomepageController",
+			"/"        => "HomepageController",
 			"/admin"   => "AdminController",
 			"/account" => "AccountController"
 		);
@@ -37,7 +37,13 @@ class RequestCoordinator {
 		}
 
 		if ( array_key_exists( $path, $this->controllers ) ) {
-			if ( strpos( $path, '/admin' ) !== false && session()->get_current_user()->getAdmin() == false ) {
+			if ( ( strpos( $path, '/admin' ) === 0 &&
+			       ! empty( session()->get_current_user() ) &&
+			       session()->get_current_user()->getAdmin() == false )
+			     ||
+			     ( strpos( $path, '/account' ) === 0 &&
+			       empty( session()->get_current_user() ) )
+			) {
 				$controller = new ErrorController( app()->getView(), '403' );
 			} else {
 				$class      = $this->controllers[ $path ];
@@ -52,5 +58,9 @@ class RequestCoordinator {
 
 	function is_admin() {
 		return strpos( $this->request, '/admin' ) === 0;
+	}
+
+	function is_account() {
+		return strpos( $this->request, '/account' ) === 0;
 	}
 }

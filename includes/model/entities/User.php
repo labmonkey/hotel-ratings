@@ -39,6 +39,11 @@ class User
      */
     private $admin;
 
+    /**
+     * @var string
+     */
+    private $oneToMany;
+
 
     /**
      * Get id
@@ -163,5 +168,73 @@ class User
     public function getAdmin()
     {
         return $this->admin;
+    }
+
+    /**
+     * Set oneToMany
+     *
+     * @param string $oneToMany
+     * @return User
+     */
+    public function setOneToMany($oneToMany)
+    {
+        $this->oneToMany = $oneToMany;
+
+        return $this;
+    }
+
+    /**
+     * Get oneToMany
+     *
+     * @return string 
+     */
+    public function getOneToMany()
+    {
+        return $this->oneToMany;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $reviews;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->reviews = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add reviews
+     *
+     * @param \Review $reviews
+     * @return User
+     */
+    public function addReview(\Review $reviews)
+    {
+        $this->reviews[] = $reviews;
+
+        return $this;
+    }
+
+    /**
+     * Remove reviews
+     *
+     * @param \Review $reviews
+     */
+    public function removeReview(\Review $reviews)
+    {
+        $this->reviews->removeElement($reviews);
+    }
+
+    /**
+     * Get reviews
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getReviews()
+    {
+        return $this->reviews;
     }
 }

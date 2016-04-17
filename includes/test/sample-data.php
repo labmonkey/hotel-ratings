@@ -37,7 +37,7 @@ foreach ( $hotels as $data ) {
 	$hotel->setDescription( $data['description'] );
 	$hotel->setImage( $data['image'] );
 
-	db()->save( $hotel );
+	$hotels_db[] = db()->save( $hotel );
 }
 
 $users = array(
@@ -47,22 +47,19 @@ $users = array(
 		'email'      => 'admin@test.com',
 		'password'   => 'password1',
 		'admin'      => true
-	),
-	array(
-		'first_name' => 'Joey',
-		'last_name'  => 'Test',
-		'email'      => 'joey@test.com',
-		'password'   => 'password1',
-		'admin'      => false
-	),
-	array(
-		'first_name' => 'Ross',
-		'last_name'  => 'Test',
-		'email'      => 'ross@test.com',
-		'password'   => 'password1',
-		'admin'      => false
 	)
 );
+
+for ( $i = 0; $i < 10; $i ++ ) {
+	$users[] =
+		array(
+			'first_name' => 'Generated',
+			'last_name'  => "User {$i}",
+			'email'      => "ross{$i}@test.com",
+			'password'   => 'password1',
+			'admin'      => false
+		);
+}
 
 foreach ( $users as $data ) {
 	$user = new User();
@@ -75,10 +72,18 @@ foreach ( $users as $data ) {
 
 	db()->save( $user );
 
-	$review = new Review();
-	$review->setMessage( "test " . rand( 100, 1000 ) );
-	$review->setRating( rand( 1, 5 ) );
-	$review->setReviewer( $user );
+	shuffle( $hotels_db );
 
-	db()->save( $review );
+	$limited = array_slice( $hotels_db, 0, rand( 1, 3 ) );
+
+	foreach ( $limited as $hotel ) {
+		$review = new Review();
+		$review->setHotel( $hotel );
+		$review->setMessage( "The hotel is really nice, with a small library where breakfast is served and small snacks in the evening. Staff is very friendly and helpful. Rooms are stylish and a good size with a very nice shower. I would recommend the hotel for couples, but not for families. The downside is the rooftop pool." );
+		$review->setRating( rand( 1, 5 ) );
+		$review->setReviewer( $user );
+		$review->setModerated( rand( 0, 10 ) > 8 ? true : false );
+
+		db()->save( $review );
+	}
 }

@@ -15,7 +15,13 @@ Review:
       type: string
       length: 500
       nullable: true
+    moderated:
+      type: boolean
+      nullable: true
   manyToOne:
     reviewer:
       targetEntity: User
+      inversedBy: reviews
+    hotel:
+      targetEntity: Hotel
       inversedBy: reviews

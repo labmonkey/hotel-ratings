@@ -19,3 +19,7 @@ Hotel:
       type: string
       length: 200
       nullable: true
+  oneToMany:
+    reviews:
+      targetEntity: Review
+      mappedBy: hotel

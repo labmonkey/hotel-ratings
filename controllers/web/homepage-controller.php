@@ -24,6 +24,10 @@ class HomepageController extends Controller {
 		$content = parent::add_content( $content );
 		$hotels  = db()->get_entity_manager()->getRepository( 'Hotel' )->findAll();
 
+		foreach ( $hotels as &$hotel ) {
+			$hotel->rating = $this->calculate_rating( $hotel );
+		}
+
 		$content['hotels'] = $hotels;
 
 		return $content;
@@ -32,14 +36,28 @@ class HomepageController extends Controller {
 	function handleForms( $action, $data ) {
 		parent::handleForms( $action, $data );
 		if ( $action === 'add-review' ) {
-			$user = session()->get_current_user();
-			
+			$user  = session()->get_current_user();
+			$hotel = db()->load( 'Hotel', $data['id'] );
+
 			$review = new Review();
-			$review->setReviewer();
+			$review->setReviewer( $user );
 			$review->setRating( $data['rating'] );
 			$review->setMessage( $data['message'] );
+			$review->setHotel( $hotel );
+			$review->setModerated(false);
 
-			db()->save( $review );
+			db()->update( $review );
 		}
+	}
+
+	function calculate_rating( $hotel ) {
+		$sum     = 0;
+		$reviews = $hotel->getReviews();
+
+		foreach ( $reviews as $review ) {
+			$sum += $review->getRating();
+		}
+
+		return (int) ( $sum / count( $reviews ) );
 	}
 }

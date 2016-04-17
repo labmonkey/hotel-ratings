@@ -1,14 +1,14 @@
 <div class="modal fade" id="modal-review" tabindex="-1" role="dialog" aria-labelledby="modal-title">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 id="modal-title" class="modal-title"></h4>
-            </div>
-            <div class="modal-body">
-                <form class="form-review --validator" autocomplete="off" method="post">
+        <form class="form-review --validator" autocomplete="off" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 id="modal-title" class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
                     <input type="hidden" name="action" value="add-review"/>
                     <input type="hidden" name="rating" value="1"/>
                     <input type="hidden" name="id" value="0"/>
@@ -21,15 +21,15 @@
                         <textarea class="form-control" id="message-text" data-minlength="100" data-maxlength="500"
                                   data-minlength-error="Comment must contain at least 100 characters"
                                   data-maxlength-error="Comment must contain maximum of 500 characters"
-                                  required placeholder="Review text"></textarea>
+                                  required placeholder="Review text" name="message"></textarea>
                         <div class="help-block with-errors"></div>
                     </div>
-                </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add review</button>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Add review</button>
-            </div>
-        </div>
+        </form>
     </div>
 </div>

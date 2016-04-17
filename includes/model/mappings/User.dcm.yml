@@ -29,3 +29,7 @@ User:
     admin:
       type: boolean
       nullable: true
+  oneToMany:
+    reviews:
+      targetEntity: Review
+      mappedBy: reviewer

@@ -35,7 +35,9 @@ class TwigView extends View {
 			Config::getViewsUrl( 'web/assets/js/app.min.js' )
 		);
 		if ( is_admin() ) {
-			$js = array_merge( $js, array() );
+			$js = array_merge( $js, array(
+				Config::getViewsUrl( 'admin/assets/js/app.min.js' )
+			) );
 		}
 
 		return $js;

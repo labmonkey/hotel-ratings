@@ -1,9 +1,10 @@
-{% extends '@web/content/review-fragment.twig' %}
+{% extends '@web/content/review-fragment-user.twig' %}
 
 {% block footer %}
     <div class="review-footer">
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                data-target="#modal-review-form" data-id="{{ review.id }}">
+                data-target="#modal-review-form" data-id="{{ review.id }}" data-hotel="{{ review.hotel.name }}"
+                data-message="{{ review.text }}" data-rating="{{ review.rating }}">
             Moderate
         </button>
     </div>
