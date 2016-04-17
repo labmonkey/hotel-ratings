@@ -1,3 +1,14 @@
+### About the application
+This is a simple application based on PHP and most popular frameworks and libraries.
+
+Application lets users review Hotels and access their account data. Administrators can moderate the reviews.
+
+- Most of the logic is **custom made** excluding the mentioned libraries.
+- Application was designed with simplicity in mind (both usage and installation)
+- Application follows **MVC** design pattern
+- Authentication is based on Session variables
+- Login and Registration validation is done both on frontend and backend side
+
 ### Requirements
 1. Apache Server
 2. PHP (Tested on 5.5)
@@ -28,23 +39,15 @@ This repository includes database file itself with populated sample data (all be
 + composer - Package manager
 + twig - Templating engine
 + doctrine - Database + orm
+
 ##### JS
 + bower - Package manager
 + gulp - Package manager
 + jquery - Javascript framework
+
 ##### CSS
 + sass - CSS preprocessor
 + twitter bootstrap - CSS framework
+
 #### Other
 + SQLite - Database engine
-
-### About the application
-This is a simple application based on PHP and most popular frameworks and libraries.
-
-Application lets users review Hotels and access their account data. Administrators can moderate the reviews.
-
-- Most of the logic is **custom made** excluding the mentioned libraries.
-- Application was designed with simplicity in mind (both usage and installation)
-- Application follows **MVC** design pattern
-- Authentication is based on Session variables
-- Login and Registration validation is done both on frontend and backend side
