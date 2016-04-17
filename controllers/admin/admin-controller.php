@@ -13,6 +13,10 @@ class AdminController extends Controller {
 	function __construct( $view ) {
 		parent::__construct( $view );
 
+		$this->slug = 'admmin';
+
+		$this->title = 'Administration area';
+
 		$this->template = TwigView::adminTemplate('pages/admin.twig');
 	}
 

@@ -17,7 +17,8 @@ class ErrorController extends Controller {
 		parent::__construct( $view );
 
 		$this->errors = array(
-			'404' => TwigView::webTemplate( 'pages/404.twig' )
+			'404' => TwigView::webTemplate( 'pages/404.twig' ),
+			'403' => TwigView::webTemplate( 'pages/403.twig' )
 		);
 
 		$this->template = get_col( $this->errors, $error, $this->errors['404'] );
