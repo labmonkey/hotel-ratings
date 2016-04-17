@@ -1,0 +1,11 @@
+{% extends '@web/layout/base.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h2>Error {{ error.code }}</h2>
+        <p>
+            {{ error.text }}
+        </p>
+        <a href="{{ error.link }}">Go back</a>
+    </div>
+{% endblock %}

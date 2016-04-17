@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 {% include '@web/layout/head.twig' %}
-<body class="list-page">
-    {% block body %}
-        {% include '@admin/layout/navbar.twig' %}
-        {% block content %}
-        {% endblock %}
-        {% include '@web/layout/footer.twig' %}
+<body class="page-{{ page.slug }}">
+{% block body %}
+    {% include '@admin/layout/navbar.twig' %}
+    {% block content %}
     {% endblock %}
+    {% include '@web/layout/footer.twig' %}
+{% endblock %}
 </body>
 </html>

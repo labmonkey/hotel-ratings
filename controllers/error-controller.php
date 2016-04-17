@@ -11,20 +11,35 @@
  */
 class ErrorController extends Controller {
 
-	private $errors;
+	private $errors, $code;
 
-	function __construct( $view, $error ) {
+	function __construct( $view, $code ) {
 		parent::__construct( $view );
 
+		$this->code = $code;
+
+		$this->slug = 'error';
+
 		$this->errors = array(
-			'404' => TwigView::webTemplate( 'pages/404.twig' ),
-			'403' => TwigView::webTemplate( 'pages/403.twig' )
+			'404' => "Page doesn't exist",
+			'403' => "Restricted access"
 		);
 
-		$this->template = get_col( $this->errors, $error, $this->errors['404'] );
+		$this->title = "Error occured";
+
+		$this->template = TwigView::webTemplate( 'pages/error.twig' );
 	}
 
 	function add_content( $content ) {
+		$content = parent::add_content( $content );
+		$error   = get_col( $this->errors, $this->code, $this->errors['404'] );
+
+		$content['error'] = array(
+			'code' => $this->code,
+			'text' => $error,
+			'link' => Config::getRootUrl()
+		);
+
 		return $content;
 	}
 }

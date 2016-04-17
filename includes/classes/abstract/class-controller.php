@@ -28,8 +28,6 @@ class Controller {
 
 		$this->slug = '';
 
-		$this->content = $this->add_content( array() );
-
 		$this->handleForms( get_col( $_POST, 'action' ), $_POST );
 	}
 
@@ -41,6 +39,7 @@ class Controller {
 	function add_content( $content ) {
 		$content['page'] = array(
 			'title' => $this->title,
+			'slug'  => $this->slug,
 			'css'   => array_merge( $this->view->get_css(), $this->css ),
 			'js'    => array_merge( $this->view->get_js(), $this->js ),
 		);
@@ -64,6 +63,7 @@ class Controller {
 	}
 
 	function display() {
+		$this->content = $this->add_content( array() );
 		$this->view->render( $this->template, $this->content );
 	}
 

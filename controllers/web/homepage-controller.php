@@ -13,7 +13,7 @@ class HomepageController extends Controller {
 	function __construct( $view ) {
 		parent::__construct( $view );
 
-		$this->template = TwigView::webTemplate('pages/homepage.twig');
+		$this->template = TwigView::webTemplate( 'pages/homepage.twig' );
 
 		$this->slug = 'homepage';
 
@@ -27,5 +27,19 @@ class HomepageController extends Controller {
 		$content['hotels'] = $hotels;
 
 		return $content;
+	}
+
+	function handleForms( $action, $data ) {
+		parent::handleForms( $action, $data );
+		if ( $action === 'add-review' ) {
+			$user = session()->get_current_user();
+			
+			$review = new Review();
+			$review->setReviewer();
+			$review->setRating( $data['rating'] );
+			$review->setMessage( $data['message'] );
+
+			db()->save( $review );
+		}
 	}
 }
